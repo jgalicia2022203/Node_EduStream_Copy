@@ -2,8 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../../users/user.model.js";
 
 export const validateJWT = async (req, res, next) => {
-  let token =
-    req.headers.token || req.query.token || req.headers["Authorization"];
+  let token = req.headers.token || req.query.token || req.headers["auth"];
 
   if (!token) {
     return res.status(401).send("A token is required for authentication");

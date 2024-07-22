@@ -1,13 +1,15 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { validateFields } from "../common/middlewares/validate-fields.js";
+import { validateJWT } from "../common/middlewares/validate-jwt.js";
 import { getUserById, updateUser } from "./user.controller.js";
 
 const router = Router();
 
-router.get("/:id", getUserById);
+router.get("/:id", validateJWT, getUserById);
 router.put(
   "/:id",
+  validateJWT,
   [
     check("username", "The username is required").optional().not().isEmpty(),
     check("password", "The password is required").optional().not().isEmpty(),
