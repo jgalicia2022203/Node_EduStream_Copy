@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
+import { validateFields } from "../common/middlewares/validate-fields.js";
 import { validateJWT } from "../common/middlewares/validate-jwt.js";
 import {
   addCategory,
@@ -21,6 +22,7 @@ router.post(
   [
     check("name", "the name is mandatory").not().isEmpty(),
     check("description", "the description is mandatory").not().isEmpty(),
+    validateFields,
   ],
   addCategory
 );
@@ -34,6 +36,7 @@ router.put(
       .optional()
       .not()
       .isEmpty(),
+    validateFields,
   ],
   updateCategory
 );
