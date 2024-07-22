@@ -28,6 +28,6 @@ router.post("/end/:id", validateJWT, endStream);
 
 router.get("/:id", getStreamById);
 
-router.get("/category/:categoryId", validateJWT, listStreamsByCategory);
+router.get("/categories/:categoryId", validateJWT, listStreamsByCategory);
 
 export default router;

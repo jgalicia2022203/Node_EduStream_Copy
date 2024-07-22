@@ -23,8 +23,8 @@ export const getCategoryById = async (req, res) => {
 
 export const addCategory = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const category = new Category({ name, description });
+    const { name, description, image } = req.body;
+    const category = new Category({ name, description, image });
     await category.save();
     res.status(201).json(category);
   } catch (error) {

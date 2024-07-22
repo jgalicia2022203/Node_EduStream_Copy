@@ -9,6 +9,10 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: [true, "description is required"],
   },
+  image: {
+    type: String,
+    required: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -22,6 +22,7 @@ router.post(
   [
     check("name", "the name is mandatory").not().isEmpty(),
     check("description", "the description is mandatory").not().isEmpty(),
+    check("image", "the image is mandatory").not().isEmpty(),
     validateFields,
   ],
   addCategory
@@ -37,6 +38,7 @@ router.put(
       .not()
       .isEmpty(),
     validateFields,
+    check("image", "the image is mandatory").optional().not().isEmpty(),
   ],
   updateCategory
 );
