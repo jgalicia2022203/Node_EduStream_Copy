@@ -1,5 +1,22 @@
 import { Router } from "express";
+import { check } from "express-validator";
+import { validateFields } from "../common/middlewares/validate-fields.js";
+import { getUserById, updateUser } from "./user.controller.js";
 
 const router = Router();
+
+router.get("/:id", getUserById);
+router.put(
+  "/:id",
+  [
+    check("username", "The username is required").optional().not().isEmpty(),
+    check("password", "The password is required").optional().not().isEmpty(),
+    check("email", "The email is required").optional().not().isEmpty(),
+    check("birthday", "The birthday is required").optional().not().isEmpty(),
+    check("phone", "The phone is required").optional().not().isEmpty(),
+    validateFields,
+  ],
+  updateUser
+);
 
 export default router;
